@@ -1,0 +1,55 @@
+# Compiled Python files
+__pycache__/
+*.pyc
+
+# Virtual Environment
+myvenv/
+venv/
+
+# Env variables file (for dotenv for example)
+.env
+
+# Data and export files
+data/*
+!data/.empty
+!data/sample_docs
+exports/*
+!exports/.empty
+
+# Deploy, bin folders
+deploy/
+bin/
+
+# Local data folders
+local/
+bak/
+resources/
+flagged/
+extras/
+obsolete/
+others/
+
+# My local files
+my_*
+local_*
+
+# IDE
+.vscode/
+
+# mypy and pytest
+.mypy_cache/
+.pytest_cache/
+
+# Compact code, bins, others
+*.tar
+*.7z
+*.gz
+*.png
+
+# Python egg metadata, regenerated from source files by setuptools.
+*.egg-info
+
+# Other
+todo.txt
+to-do.txt
+tasklist.md
