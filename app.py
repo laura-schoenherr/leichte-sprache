@@ -1,6 +1,7 @@
 # import os
 import gradio as gr
 from core import simplify_text
+from llm import list_local_models
 import parameters as p
 
 
@@ -10,18 +11,20 @@ pinfo = {
     "Temp": "LLM Parameter. Higher values increase the randomness of the answer",
 }
 
+LLM_CHOICES = list(set(p.LLM_CHOICES) & set(list_local_models()))
+DEAFULT_MODEL = LLM_CHOICES[0]
 
 ls_ui = gr.Interface(
     simplify_text,
     gr.Textbox(label="Original Text", lines=17),
     gr.Textbox(label="Leichte Sprache", lines=17),
     description="Simplify your text with a LLM!",
-    examples=[[p.EXAMPLE, p.LLM_CHOICES[0], False, 5, 0.9, 0.3]],
+    examples=[[p.EXAMPLE, DEAFULT_MODEL, False, 5, 0.9, 0.3]],
     allow_flagging="manual",
     flagging_dir=p.EXPORT_PATH,
     flagging_options=[("Export", "export")],
     additional_inputs=[
-        gr.Dropdown(choices=p.LLM_CHOICES, value=p.LLM_CHOICES[0], label="Model"),
+        gr.Dropdown(choices=LLM_CHOICES, value=DEAFULT_MODEL, label="Model"),
         gr.Checkbox(value=False, label="Use Rules", info="Use rules for simplification"),
         gr.Slider(1, 10, value=5, step=1, label="Top k", info=pinfo.get("Top k")),
         gr.Slider(
