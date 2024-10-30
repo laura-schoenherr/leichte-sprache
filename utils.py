@@ -1,5 +1,4 @@
 import os
-from prompts import PROMPT_TEMPLATE, RULES_LS
 
 
 def get_new_file_path(
@@ -20,10 +19,3 @@ def get_new_file_path(
     file_name, orig_ext = os.path.splitext(file_base)
     ext = extension if extension else orig_ext
     return os.path.join(dir_name, file_name + suffix + ext)
-
-
-def create_prompt(text: str, use_rules: bool = False):
-    if use_rules:
-        return PROMPT_TEMPLATE.format(rules=RULES_LS, text=text)
-    else:
-        return PROMPT_TEMPLATE.format(rules="", text=text)

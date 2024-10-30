@@ -5,8 +5,6 @@ import argparse
 from utils import get_new_file_path
 from parameters import LANGUAGE
 
-# from typing import List, Dict, Any
-
 textstat.set_lang(LANGUAGE)
 
 
@@ -21,6 +19,7 @@ def calculate_wstf_score(text: str) -> float:
 def preprocess_data(
     file_path: str, save_file: bool = False, verbose: bool = False
 ) -> pd.DataFrame:
+    """Clean the data from a CSV file"""
 
     df = pd.read_csv(file_path, usecols=[2, 3])
     if verbose:
@@ -63,11 +62,11 @@ def calculate_complexity_scores(df: pd.DataFrame, verbose: bool = True, tophard:
     Calculate Flesch Reading Ease (FRE) score and Wiener Sachtextformel (WSTF) score for a given DataFrame.
 
     Args:
-        df (pd.DataFrame): The DataFrame containing the text to be analyzed.
-        language (str, optional): The language of the text ('de' for German). Defaults to 'de'.
+        df: The DataFrame containing the text to be analyzed.
+        language (str, optional): The language of the text (Defaults to 'de' for German)
 
     Returns:
-        pd.DataFrame: A DataFrame with the original and leichte sprache texts along with their respective scores.
+        A DataFrame with the Original and Leichte Sprache texts along with their respective scores.
     """
 
     # Calculate Flesch Reading Ease scores
@@ -124,6 +123,19 @@ def plot_scores(
     orig_file: str = None,
     show_graph: bool = True,
 ):
+    """
+    Plot a bar graph of the scores.
+
+    Args:
+        df: The DataFrame containing the text with respective scores.
+        score_name (str, optional): The name of the score to plot. Defaults to "FRE".
+        save_file (bool, optional): Whether to save the graph as an image. Defaults to True.
+        orig_file (str, optional): The original file path for saving the graph. If None, a new filename will be generated.
+        show_graph (bool, optional): Whether to display the graph in a window. Defaults to True.
+
+    Returns:
+        None
+    """
 
     COLORS = ["orange", "green", "blue", "black", "purple", "red"]
     headers = df.columns.to_list()

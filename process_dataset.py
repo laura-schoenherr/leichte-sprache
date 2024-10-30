@@ -3,9 +3,9 @@ import argparse
 import pandas as pd
 from tqdm import tqdm
 from llm import llm_generate
+from core import create_prompt
 from analysedata import calculate_fre_score, calculate_wstf_score, plot_scores
-from utils import get_new_file_path, create_prompt
-# from prompts import PROMPT_TEMPLATE
+from utils import get_new_file_path
 from parameters import MODEL, USE_RULES
 
 logging.basicConfig(format=os.getenv("LOG_FORMAT", "%(asctime)s [%(levelname)s] %(message)s"))
@@ -55,7 +55,7 @@ def load_dataset(file_path: str, verbose=True) -> pd.DataFrame:
     return df
 
 
-# %% ============== Process Dataset ============================================
+# %% ============== Process Dataset with LLM ===================================
 
 
 def process_df_w_llm(
@@ -69,16 +69,11 @@ def process_df_w_llm(
     if USE_RULES:
         HEADER += "_w_rules"
 
-    print_prompt = True
-
     for index, row in tqdm(df.iterrows(), total=df.shape[0]):
         if pd.isna(row[column_choice]):
             continue
         # prompt = PROMPT_TEMPLATE.format(text=row[column_choice])
         prompt = create_prompt(row[column_choice], use_rules=USE_RULES)
-        if print_prompt:
-            print(prompt)
-            print_prompt = False
         response = llm_generate(prompt)
         fre_score = calculate_fre_score(response)
         wstf_score = calculate_wstf_score(response)
@@ -149,5 +144,8 @@ if __name__ == "__main__":
         help="Name of the column containing the text to process.",
     )
     args = parser.parse_args()
+
+    # TO-DO
+    # Add model and use rules args options
 
     main(args.file_path, args.column)

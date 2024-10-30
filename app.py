@@ -1,7 +1,6 @@
 # import os
 import gradio as gr
-from process_dataset import llm_generate
-from prompts import PROMPT_TEMPLATE
+from core import simplify_text
 import parameters as p
 
 
@@ -10,14 +9,6 @@ pinfo = {
     "Top p": "LLM Parameter. A higher value will produce more varied text",
     "Temp": "LLM Parameter. Higher values increase the randomness of the answer",
 }
-
-
-def simplify_text(text: str, llm: str, top_k: int, top_p: float, temp: float) -> str:
-    if llm is None:
-        llm = "llama3.1"
-    prompt = PROMPT_TEMPLATE.format(text=text)
-    simplified_text = llm_generate(prompt, llm, top_k, top_p, temp)
-    return simplified_text
 
 
 ls_ui = gr.Interface(

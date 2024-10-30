@@ -20,7 +20,6 @@ def llm_generate(prompt: str, model: str = MODEL, top_k: int = 5, top_p: float =
     }
 
     try:
-        # logger.debug(f"Sending request to LLM {model}")
         r = requests.post(url, json=data)
         response_dic = json.loads(r.text)
         return response_dic.get("response", "")
