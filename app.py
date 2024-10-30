@@ -11,8 +11,9 @@ pinfo = {
     "Temp": "LLM Parameter. Higher values increase the randomness of the answer",
 }
 
-LLM_CHOICES = list(set(p.LLM_CHOICES) & set(list_local_models()))
-DEFAULT_MODEL = LLM_CHOICES[0] if LLM_CHOICES else p.MODEL
+AVBL_LLMS = list_local_models()
+AVBL_LLM_CHOICES = sorted(list(set(p.LLM_CHOICES) & set(AVBL_LLMS)))
+DEFAULT_MODEL = p.MODEL if (p.MODEL in AVBL_LLMS) else AVBL_LLM_CHOICES[0]
 
 ls_ui = gr.Interface(
     simplify_text,
@@ -25,7 +26,7 @@ ls_ui = gr.Interface(
     flagging_options=[("Export", "export")],
     additional_inputs=[
         gr.Dropdown(
-            choices=LLM_CHOICES, value=DEFAULT_MODEL, label="Model", allow_custom_value=True
+            choices=AVBL_LLM_CHOICES, value=DEFAULT_MODEL, label="Model", allow_custom_value=True
         ),
         gr.Checkbox(value=False, label="Use Rules", info="Use rules for simplification"),
         gr.Slider(1, 10, value=5, step=1, label="Top k", info=pinfo.get("Top k")),
