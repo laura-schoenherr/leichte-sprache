@@ -12,19 +12,21 @@ pinfo = {
 }
 
 LLM_CHOICES = list(set(p.LLM_CHOICES) & set(list_local_models()))
-DEAFULT_MODEL = LLM_CHOICES[0]
+DEFAULT_MODEL = LLM_CHOICES[0] if LLM_CHOICES else p.MODEL
 
 ls_ui = gr.Interface(
     simplify_text,
     gr.Textbox(label="Original Text", lines=17),
     gr.Textbox(label="Leichte Sprache", lines=17),
     description="Simplify your text with a LLM!",
-    examples=[[p.EXAMPLE, DEAFULT_MODEL, False, 5, 0.9, 0.3]],
+    examples=[[p.EXAMPLE, DEFAULT_MODEL, False, 5, 0.9, 0.3]],
     allow_flagging="manual",
     flagging_dir=p.EXPORT_PATH,
     flagging_options=[("Export", "export")],
     additional_inputs=[
-        gr.Dropdown(choices=LLM_CHOICES, value=DEAFULT_MODEL, label="Model"),
+        gr.Dropdown(
+            choices=LLM_CHOICES, value=DEFAULT_MODEL, label="Model", allow_custom_value=True
+        ),
         gr.Checkbox(value=False, label="Use Rules", info="Use rules for simplification"),
         gr.Slider(1, 10, value=5, step=1, label="Top k", info=pinfo.get("Top k")),
         gr.Slider(
