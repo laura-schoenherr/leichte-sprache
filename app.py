@@ -22,6 +22,7 @@ ls_ui = gr.Interface(
     flagging_options=[("Export", "export")],
     additional_inputs=[
         gr.Dropdown(choices=p.LLM_CHOICES, value=p.LLM_CHOICES[0], label="Model"),
+        # gr.Checkbox(value=False, label="Use Rules", info="Use rules for simplification"),
         gr.Slider(1, 10, value=5, step=1, label="Top k", info=pinfo.get("Top k")),
         gr.Slider(
             0.1, 1, value=0.9, step=0.1, label="Top p", info=pinfo.get("Top p"), visible=False
