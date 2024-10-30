@@ -7,8 +7,9 @@ LANGUAGE = "de"
 LLMBASEURL = urljoin(os.getenv("OLLAMA_HOST", "http://localhost:11434"), "api/")
 
 # First on the list is used as default
-LLM_CHOICES = ["llama3.1-ls:8b-sysm", "llama3.1-ls:8b-fs-v01", "llama3.1"]
+LLM_CHOICES = ["llama3.1-ls:8b-sysm", "llama3.1-ls:8b-fs-v02", "llama3.1"]
 MODEL = os.getenv("OLLAMA_MODEL", LLM_CHOICES[0])
+# TO DO: LLM_CHOICES as intersection of available Ollama models and favourites choices
 
 USE_RULES = False
 

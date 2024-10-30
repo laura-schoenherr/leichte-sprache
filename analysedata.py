@@ -190,7 +190,7 @@ def main(
     if verbose:
         print("=" * 80)
         print("\nAnalysed Data Stats:")
-        print(df.describe())
+        print(df.describe().to_markdown())
 
     output_filename = None
     if save_file:
