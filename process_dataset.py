@@ -49,7 +49,7 @@ def load_dataset(file_path: str, verbose=True) -> pd.DataFrame:
             print("Average Original WSTF Score:", round(avg_original_wstf, 2))
         if "Leichte Sprache WSTF Score" in df.columns:
             avg_leichte_sprache_wstf = df["Leichte Sprache WSTF Score"].mean().round(2)
-            print("Average Lichte Sprache WSTF Score:", round(avg_leichte_sprache_wstf, 2))
+            print("Average Leichte Sprache WSTF Score:", round(avg_leichte_sprache_wstf, 2))
             print("-" * 80)
 
     return df
@@ -59,13 +59,13 @@ def load_dataset(file_path: str, verbose=True) -> pd.DataFrame:
 
 
 def process_df_w_llm(
-    df: pd.DataFrame, column_choice: str = "Original", verbose: bool = True
+    df: pd.DataFrame, model: str = MODEL, column_choice: str = "Original", verbose: bool = True
 ) -> pd.DataFrame:
     """Process the dataset with LLM and calculate readability scores."""
 
-    logger.info(f"Processing dataset with LLM {MODEL}...")
+    logger.info(f"Processing dataset with LLM {model}...")
 
-    HEADER = MODEL
+    HEADER = model
     if USE_RULES:
         HEADER += "_w_rules"
 
@@ -97,6 +97,7 @@ def process_df_w_llm(
 
 def main(
     file_path: str,
+    model: str,
     column: str = "Original",
     save_file: bool = True,
     plot: bool = True,
@@ -112,7 +113,7 @@ def main(
     if column not in df.columns:
         raise ValueError(f"Column '{column}' does not exist in the dataset.")
 
-    df = process_df_w_llm(df, column_choice=column, verbose=verbose)
+    df = process_df_w_llm(df, model, column_choice=column, verbose=verbose)
 
     output_file = None
     if save_file:
@@ -137,15 +138,17 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process a dataset with Leichte Sprache model.")
     parser.add_argument("file_path", type=str, help="Path to the input CSV file.")
     parser.add_argument(
+        "-m", "--model", type=str, default=MODEL, help="Model to use for processing."
+    )
+    parser.add_argument(
         "-c",
         "--column",
         type=str,
         default="Original",
         help="Name of the column containing the text to process.",
     )
+    # TO-DO: add use_rules bool as arg option
+
     args = parser.parse_args()
 
-    # TO-DO
-    # Add model and use_rules args options
-
-    main(args.file_path, args.column)
+    main(args.file_path, args.model, args.column)
