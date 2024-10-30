@@ -12,6 +12,11 @@ MODEL = os.getenv("OLLAMA_MODEL", LLM_CHOICES[0])
 
 USE_RULES = False
 
+# LLM default parameters
+TOP_K = 5
+TOP_P = 0.9
+TEMP = 0.3
+
 # Other Features
 EXPORT_PATH = "exports"
 

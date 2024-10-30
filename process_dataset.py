@@ -2,11 +2,10 @@ import logging, os
 import argparse
 import pandas as pd
 from tqdm import tqdm
-from llm import llm_generate
-from core import create_prompt
+from core import simplify_text
 from analysedata import calculate_fre_score, calculate_wstf_score, plot_scores
 from utils import get_new_file_path
-from parameters import MODEL, USE_RULES
+import parameters as p
 
 logging.basicConfig(format=os.getenv("LOG_FORMAT", "%(asctime)s [%(levelname)s] %(message)s"))
 logger = logging.getLogger(__name__)
@@ -59,22 +58,27 @@ def load_dataset(file_path: str, verbose=True) -> pd.DataFrame:
 
 
 def process_df_w_llm(
-    df: pd.DataFrame, model: str = MODEL, column_choice: str = "Original", verbose: bool = True
+    df: pd.DataFrame, model: str = p.MODEL, column_choice: str = "Original", verbose: bool = True
 ) -> pd.DataFrame:
     """Process the dataset with LLM and calculate readability scores."""
 
     logger.info(f"Processing dataset with LLM {model}...")
 
     HEADER = model
-    if USE_RULES:
+    if p.USE_RULES:
         HEADER += "_w_rules"
 
     for index, row in tqdm(df.iterrows(), total=df.shape[0]):
         if pd.isna(row[column_choice]):
             continue
-        # prompt = PROMPT_TEMPLATE.format(text=row[column_choice])
-        prompt = create_prompt(row[column_choice], use_rules=USE_RULES)
-        response = llm_generate(prompt)
+        response = simplify_text(
+            row[column_choice],
+            model,
+            use_rules=p.USE_RULES,
+            top_k=p.TOP_K,
+            top_p=p.TOP_P,
+            temp=p.TEMP,
+        )
         fre_score = calculate_fre_score(response)
         wstf_score = calculate_wstf_score(response)
 
@@ -118,7 +122,7 @@ def main(
     output_file = None
     if save_file:
         suffix = "_llm_processed"
-        if USE_RULES:
+        if p.USE_RULES:
             suffix += "_w_rules"
         output_file = get_new_file_path(file_path, suffix=suffix)
         df.to_csv(output_file, index=False, encoding="utf-8")
@@ -138,7 +142,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process a dataset with Leichte Sprache model.")
     parser.add_argument("file_path", type=str, help="Path to the input CSV file.")
     parser.add_argument(
-        "-m", "--model", type=str, default=MODEL, help="Model to use for processing."
+        "-m", "--model", type=str, default=p.MODEL, help="Model to use for processing."
     )
     parser.add_argument(
         "-c",
