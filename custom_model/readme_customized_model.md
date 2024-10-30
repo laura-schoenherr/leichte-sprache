@@ -31,6 +31,20 @@ MESSAGE user Is Ontario in Canada?
 MESSAGE assistant yes
 ```
 
+
+Fewshot approach format for the current use case:
+
+```
+MESSAGE user """Bitte schreibe den folgenden schwer verständlichen Text vollständig in Leichte Sprache auf dem Niveau A2 um.
+Füge keine Erklärungen oder Kommentare hinzu, sondern nur die vereinfachte Version des folgendes Textes.
+Text:
+
+"""
+MESSAGE assistant """
+
+"""
+```
+
 Check further parameters: [Modelfile Parameters](https://github.com/ollama/ollama/blob/main/docs/modelfile.md#parameter)
 
 ### Local Examples
