@@ -1,6 +1,7 @@
 import logging, os
 import requests, json
 from urllib.parse import urljoin
+from typing import List
 from parameters import LLMBASEURL, MODEL
 
 logging.basicConfig(format=os.getenv("LOG_FORMAT", "%(asctime)s [%(levelname)s] %(message)s"))
@@ -10,7 +11,9 @@ logger.setLevel(os.getenv("LOG_LEVEL", logging.INFO))
 # ============== LLM (Ollama) =================================================
 
 
-def llm_generate(prompt: str, model: str = MODEL, top_k: int = 5, top_p: float = 0.9, temp: float = 0.2) -> str:
+def llm_generate(
+    prompt: str, model: str = MODEL, top_k: int = 5, top_p: float = 0.9, temp: float = 0.2
+) -> str:
     url = urljoin(LLMBASEURL, "generate")
     data = {
         "model": model,
@@ -31,8 +34,24 @@ def llm_generate(prompt: str, model: str = MODEL, top_k: int = 5, top_p: float =
         logger.debug(f"Response:{r}")
 
 
+def list_local_models() -> List:
+
+    url = urljoin(LLMBASEURL, "tags")
+
+    try:
+        r = requests.get(url)
+        response_dic = json.loads(r.text)
+        models_names = [model.get("name") for model in response_dic.get("models")]
+        return models_names
+
+    except Exception as e:
+        logger.error(f"Exception: {e}\nResponse:{response_dic}")
+
+
 if __name__ == "__main__":
-    print("Quick test of LLM")
+    print("Local models:")
+    print(list_local_models())
+    print("\nQuick test of LLM")
     print("Model:", MODEL)
     prompt = "Hi, who are you and what can you do?"
     print("Prompt:", prompt)
