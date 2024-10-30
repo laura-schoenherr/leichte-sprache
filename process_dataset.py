@@ -84,12 +84,12 @@ def process_df_w_llm(
 
     if verbose:
         # Average FRE score
-        print(f"\n{MODEL} Average Scores:")
-        avg_fre = df[f"{MODEL} FRE Score"].mean().round(2)
+        print(f"\n{HEADER} Average Scores:")
+        avg_fre = df[f"{HEADER} FRE Score"].mean().round(2)
         print("Average Flesch Reading Ease Score:", avg_fre)
 
         # Average WSTF score
-        avg_wstf = df[f"{MODEL} WSTF Score"].mean().round(2)
+        avg_wstf = df[f"{HEADER} WSTF Score"].mean().round(2)
         print("Average Wiener Sachtextformel Score:", avg_wstf)
 
     return df
@@ -146,6 +146,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # TO-DO
-    # Add model and use rules args options
+    # Add model and use_rules args options
 
     main(args.file_path, args.column)
