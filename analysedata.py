@@ -21,7 +21,7 @@ def preprocess_data(
 ) -> pd.DataFrame:
     """Clean the data from a CSV file"""
 
-    df = pd.read_csv(file_path, usecols=[2, 3])
+    df = pd.read_csv(file_path, usecols=[0, 1])
     if verbose:
         print("Initial Dataset Info:")
         print(df.info(verbose=False))
