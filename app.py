@@ -28,7 +28,7 @@ ls_ui = gr.Interface(
         gr.Dropdown(
             choices=AVBL_LLM_CHOICES, value=DEFAULT_MODEL, label="Model", allow_custom_value=True
         ),
-        gr.Checkbox(value=False, label="Use Rules", info="Use rules for simplification"),
+        gr.Checkbox(value=p.USE_RULES, label="Use Rules", info="Use rules for simplification"),
         gr.Slider(1, 10, value=5, step=1, label="Top k", info=pinfo.get("Top k")),
         gr.Slider(
             0.1, 1, value=0.9, step=0.1, label="Top p", info=pinfo.get("Top p"), visible=False
