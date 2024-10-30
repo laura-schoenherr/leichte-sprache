@@ -58,14 +58,18 @@ def load_dataset(file_path: str, verbose=True) -> pd.DataFrame:
 
 
 def process_df_w_llm(
-    df: pd.DataFrame, model: str = p.MODEL, column_choice: str = "Original", verbose: bool = True
+    df: pd.DataFrame,
+    model: str = p.MODEL,
+    use_rules: bool = False,
+    column_choice: str = "Original",
+    verbose: bool = True,
 ) -> pd.DataFrame:
     """Process the dataset with LLM and calculate readability scores."""
 
     logger.info(f"Processing dataset with LLM {model}...")
 
     HEADER = model
-    if p.USE_RULES:
+    if use_rules:
         HEADER += "_w_rules"
 
     for index, row in tqdm(df.iterrows(), total=df.shape[0]):
@@ -74,7 +78,7 @@ def process_df_w_llm(
         response = simplify_text(
             row[column_choice],
             model,
-            use_rules=p.USE_RULES,
+            use_rules=use_rules,
             top_k=p.TOP_K,
             top_p=p.TOP_P,
             temp=p.TEMP,
@@ -102,6 +106,7 @@ def process_df_w_llm(
 def main(
     file_path: str,
     model: str,
+    use_rules: bool = False,
     column: str = "Original",
     save_file: bool = True,
     plot: bool = True,
@@ -117,12 +122,12 @@ def main(
     if column not in df.columns:
         raise ValueError(f"Column '{column}' does not exist in the dataset.")
 
-    df = process_df_w_llm(df, model, column_choice=column, verbose=verbose)
+    df = process_df_w_llm(df, model, use_rules, column_choice=column, verbose=verbose)
 
     output_file = None
     if save_file:
         suffix = "_llm_processed"
-        if p.USE_RULES:
+        if use_rules:
             suffix += "_w_rules"
         output_file = get_new_file_path(file_path, suffix=suffix)
         df.to_csv(output_file, index=False, encoding="utf-8")
@@ -144,6 +149,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "-m", "--model", type=str, default=p.MODEL, help="Model to use for processing."
     )
+
+    parser.add_argument("-r", "--use_rules", action="store_true", help="Use rules for processing.")
+
     parser.add_argument(
         "-c",
         "--column",
@@ -151,8 +159,9 @@ if __name__ == "__main__":
         default="Original",
         help="Name of the column containing the text to process.",
     )
-    # TO-DO: add use_rules bool as arg option
 
     args = parser.parse_args()
 
-    main(args.file_path, args.model, args.column)
+    use_rules = args.use_rules or p.USE_RULES
+
+    main(args.file_path, args.model, use_rules, args.column)
