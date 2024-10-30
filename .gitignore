@@ -18,7 +18,6 @@ exports/*
 
 # Deploy, bin folders
 deploy/
-bin/
 
 # Local data folders
 local/
