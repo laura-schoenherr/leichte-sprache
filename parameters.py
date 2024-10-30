@@ -7,7 +7,8 @@ LANGUAGE = "de"
 LLMBASEURL = urljoin(os.getenv("OLLAMA_HOST", "http://localhost:11434"), "api/")
 
 # First on the list is used as default
-LLM_CHOICES = ["llama3.1-ls:8b-sysm", "llama3.1-ls:8b-fs-v02", "llama3.1:latest"]
+LLM_CHOICES = ["llama3.1-leichte-sprache:latest", "llama3.1-leichte-sprache:fs", "llama3.1-leichte-sprache:basic", "llama3.2-leichte-sprache:latest", "llama3.2-leichte-sprache:fs", "llama3.2-leichte-sprache:basic"]
+
 MODEL = os.getenv("OLLAMA_MODEL", LLM_CHOICES[0])
 
 USE_RULES = False
