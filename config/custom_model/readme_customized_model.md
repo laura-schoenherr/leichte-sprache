@@ -50,9 +50,9 @@ Check further parameters: [Modelfile Parameters](https://github.com/ollama/ollam
 ### Local Examples
 
 ```
-ollama create llama3.1-ls:8b-sysm -f custom_model/Modelfile_LS_base
+ollama create lama3.2-leichte-sprache:basic -f custom_model/Modelfile_llama32_LS_basic
 
-ollama create llama3.1-ls:8b-fs -f custom_model/Modelfile_LS_Fewshot
+ollama create llama3.1-leichte-sprache:fs -f custom_model/Modelfile_llama31_LS_fs
 ```
 
 
