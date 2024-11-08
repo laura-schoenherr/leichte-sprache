@@ -18,6 +18,7 @@ ls_ui = gr.Interface(
     simplify_text,
     gr.Textbox(label="Original Text", lines=17),
     gr.Textbox(label="Leichte Sprache", lines=17),
+    title="Leichte Sprache - Simplify Text with LLMs",
     description="Simplify your text with a LLM!",
     examples=[[p.EXAMPLE, DEFAULT_MODEL, False, 5, 0.9, 0.3]],
     allow_flagging="manual",
