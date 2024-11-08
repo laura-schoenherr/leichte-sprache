@@ -147,7 +147,7 @@ def plot_scores(
         None
     """
 
-    COLORS = ["orange", "green", "blue", "black", "purple", "red"]
+    COLORS = ["black", "grey", "orange", "green", "brown", "darkcyan", "red", "blue",]
     headers = df.columns.to_list()
     score_headers = [header for header in headers if score_name in header]
     colors = COLORS[: len(score_headers)]
