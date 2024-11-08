@@ -1,7 +1,7 @@
 import logging, os
 import pandas as pd
 import argparse
-from prompts import SYSTEM_MESSAGE_LS, PROMPT_TEMPLATE
+from leichtesprache.prompts import SYSTEM_MESSAGE_LS, PROMPT_TEMPLATE
 
 logging.basicConfig(format=os.getenv("LOG_FORMAT", "%(asctime)s [%(levelname)s] %(message)s"))
 logger = logging.getLogger(__name__)

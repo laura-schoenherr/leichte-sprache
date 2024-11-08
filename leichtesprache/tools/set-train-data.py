@@ -2,7 +2,7 @@ import logging, os
 import pandas as pd
 import json
 from typing import List, Dict
-from prompts import PROMPT_TEMPLATE_BASIC
+from leichtesprache.prompts import PROMPT_TEMPLATE_BASIC
 import argparse
 
 logging.basicConfig(format=os.getenv("LOG_FORMAT", "%(asctime)s [%(levelname)s] %(message)s"))

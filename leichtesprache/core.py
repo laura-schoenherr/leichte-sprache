@@ -1,7 +1,7 @@
 import os, logging
-from prompts import PROMPT_TEMPLATE, RULES_LS
-from parameters import MODEL
-from llm import llm_generate
+from leichtesprache.prompts import PROMPT_TEMPLATE, RULES_LS
+from leichtesprache.parameters import MODEL
+from leichtesprache.llm import llm_generate
 
 logging.basicConfig(format=os.getenv("LOG_FORMAT", "%(asctime)s [%(levelname)s] %(message)s"))
 logger = logging.getLogger(__name__)

@@ -1,8 +1,8 @@
 # import os
 import gradio as gr
-from core import simplify_text
-from llm import list_local_models
-import parameters as p
+from leichtesprache.core import simplify_text
+from leichtesprache.llm import list_local_models
+import leichtesprache.parameters as p
 
 
 pinfo = {

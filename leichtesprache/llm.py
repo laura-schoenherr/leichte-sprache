@@ -2,7 +2,7 @@ import logging, os
 import requests, json
 from urllib.parse import urljoin
 from typing import List
-from parameters import LLMBASEURL, MODEL
+from leichtesprache.parameters import LLMBASEURL, MODEL
 
 logging.basicConfig(format=os.getenv("LOG_FORMAT", "%(asctime)s [%(levelname)s] %(message)s"))
 logger = logging.getLogger(__name__)
