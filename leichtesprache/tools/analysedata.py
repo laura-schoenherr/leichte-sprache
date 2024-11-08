@@ -2,8 +2,8 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import textstat
 import argparse
-from utils import get_new_file_path
-from parameters import LANGUAGE
+from leichtesprache.utils import get_new_file_path
+from leichtesprache.parameters import LANGUAGE
 
 textstat.set_lang(LANGUAGE)
 

@@ -2,10 +2,10 @@ import logging, os
 import argparse
 import pandas as pd
 from tqdm import tqdm
-from core import simplify_text
-from analysedata import calculate_fre_score, calculate_wstf_score, plot_scores
-from utils import get_new_file_path
-import parameters as p
+from leichtesprache.core import simplify_text
+from leichtesprache.tools.analysedata import calculate_fre_score, calculate_wstf_score, plot_scores
+from leichtesprache.utils import get_new_file_path
+import leichtesprache.parameters as p
 
 logging.basicConfig(format=os.getenv("LOG_FORMAT", "%(asctime)s [%(levelname)s] %(message)s"))
 logger = logging.getLogger(__name__)
