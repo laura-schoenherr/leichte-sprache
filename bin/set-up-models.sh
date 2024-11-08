@@ -13,4 +13,13 @@ echo -e 'llama3.1-leichte-sprache:basic...' && \
 ollama create llama3.1-leichte-sprache:basic -f config/custom_model/Modelfile_llama31_LS_basic && \
 echo -e 'llama3.1-leichte-sprache:fs...' && \
 ollama create llama3.1-leichte-sprache:fs -f config/custom_model/Modelfile_llama31_LS_fs && \
-echo -e 'Models succesfully set'
+echo -e 'Custom Models succesfully set' && \
+echo -e 'Pulling Fine-tuned models...' && \
+ollama pull kisz/llama3.2-leichte-sprache-ft:latest || echo 'Something went wrong while pulling llama3.2-leichte-sprache-ft' && \
+ollama pull kisz/llama3.1-leichte-sprache-ft:latest || echo 'Something went wrong while pulling llama3.1-leichte-sprache-ft' && \
+echo -e 'Renaming...' && \
+ollama cp kisz/llama3.2-leichte-sprache-ft:latest llama3.2-leichte-sprache-ft:latest && \
+ollama rm kisz/llama3.2-leichte-sprache-ft:latest
+ollama cp kisz/llama3.1-leichte-sprache-ft:latest llama3.1-leichte-sprache-ft:latest && \
+ollama rm kisz/llama3.2-leichte-sprache-ft:latest
+echo -e 'Fine-tuned Models succesfully set'
