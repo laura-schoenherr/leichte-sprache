@@ -9,11 +9,11 @@ textstat.set_lang(LANGUAGE)
 
 
 def calculate_fre_score(text: str) -> float:
-    return textstat.flesch_reading_ease(text)
+    return max(textstat.flesch_reading_ease(text), 0)
 
 
 def calculate_wstf_score(text: str) -> float:
-    return textstat.wiener_sachtextformel(text, 1)
+    return max(textstat.wiener_sachtextformel(text, 1), 4)
 
 
 def preprocess_data(
