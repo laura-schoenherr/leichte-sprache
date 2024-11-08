@@ -43,7 +43,6 @@ local_*
 *.tar
 *.7z
 *.gz
-*.png
 
 # Python egg metadata, regenerated from source files by setuptools.
 *.egg-info
