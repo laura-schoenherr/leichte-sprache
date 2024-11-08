@@ -147,7 +147,16 @@ def plot_scores(
         None
     """
 
-    COLORS = ["black", "grey", "orange", "green", "brown", "darkcyan", "red", "blue",]
+    COLORS = [
+        "black",
+        "grey",
+        "orange",
+        "green",
+        "brown",
+        "darkcyan",
+        "red",
+        "blue",
+    ]
     headers = df.columns.to_list()
     score_headers = [header for header in headers if score_name in header]
     colors = COLORS[: len(score_headers)]
@@ -198,7 +207,7 @@ def main(
     df = calculate_complexity_scores(df, tophard=True)
 
     if verbose:
-        print("\n" + "="*80)
+        print("\n" + "=" * 80)
         print("\nAnalysed Data Stats:\n")
         print(df.describe().to_markdown())
 

@@ -1,4 +1,3 @@
-# import os
 import gradio as gr
 from leichtesprache.core import simplify_text
 from leichtesprache.llm import list_local_models
