@@ -21,7 +21,7 @@ ls_ui = gr.Interface(
     title="Leichte Sprache - Simplify Text with LLMs",
     description="Simplify your text with a LLM!",
     examples=[[p.EXAMPLE, DEFAULT_MODEL, False, 5, 0.9, 0.3]],
-    allow_flagging="manual",
+    flagging_mode="manual",
     flagging_dir=p.EXPORT_PATH,
     flagging_options=[("Export", "export")],
     additional_inputs=[
@@ -37,9 +37,7 @@ ls_ui = gr.Interface(
     ],
     additional_inputs_accordion=gr.Accordion(label="Settings", open=False),
     submit_btn="Simplify!",
-    clear_btn=None,
 )
-
 
 if __name__ == "__main__":
 
