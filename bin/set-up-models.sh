@@ -21,5 +21,5 @@ echo -e 'Renaming...' && \
 ollama cp kisz/llama3.2-leichte-sprache-ft:latest llama3.2-leichte-sprache-ft:latest && \
 ollama rm kisz/llama3.2-leichte-sprache-ft:latest
 ollama cp kisz/llama3.1-leichte-sprache-ft:latest llama3.1-leichte-sprache-ft:latest && \
-ollama rm kisz/llama3.2-leichte-sprache-ft:latest
+ollama rm kisz/llama3.1-leichte-sprache-ft:latest
 echo -e 'Fine-tuned Models succesfully set'
