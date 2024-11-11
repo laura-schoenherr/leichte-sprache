@@ -52,6 +52,12 @@ Performance consideration: On notebooks/PCs with dedicated GPUs, all the  set mo
 
 ---
 
+## Extra Tools
+
+ There are additional [command line input tools](docs/extra_tools.md) that you can use to batch process data.
+
+---
+
 ## Development
 
 Before committing, format the code using Black:
