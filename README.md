@@ -8,8 +8,7 @@ Locally-run tool to simplify German into "Leichte Sprache" (easy language) based
 
 ![LeichteSprache](images/leichte-sprache-demo.png)
 
-The browser interface is designed for intuitive use, allowing different models and approaches to be experimented with. 
-The implementation focuses on simplicity, low-level components and modularity, allowing developers and Python enthusiasts to modify and build upon.
+The browser interface is designed for intuitive use, allowing experimentation with different models and approaches. The implementation focuses on simplicity, low-level components and modularity, allowing developers and Python enthusiasts to modify and build upon.
 
 ### Installation
 
