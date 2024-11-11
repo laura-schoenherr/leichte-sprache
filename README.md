@@ -102,7 +102,7 @@ $ python3 app.py
 
 ### Key Settings
 
-- **Model**: Select the desired [Model](config/info_models_versions.md)
+- **Model**: Select the desired [Model](docs/info_models_versions.md)
 - **Use Rules** (checkbox): Click for adding Leichte Sprache rules to the prompt sent to the LLM. 
 
 #### Additional Input parameters for the LLMs
