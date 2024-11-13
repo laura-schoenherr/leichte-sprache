@@ -1,4 +1,5 @@
-[![logo.png](images/logo.png)](https://hpi.de/en/research/hpi-data-center/ai-service-center/)
+| [![hpi_logo.png](images/hpi_logo.png)](https://hpi.de/en/research/hpi-data-center/ai-service-center/) | [![dabb_logo.png](images/dabb_logo.png)](https://www.digital-agentur.de/)    |
+| --- | --- |
 
 # Leichte Sprache
 
@@ -79,5 +80,10 @@ $ export LOG_LEVEL='DEBUG'
 ---
 
 ## License
-
 [GPLv3](./LICENSE)
+
+---
+
+![bmbf_logo.png](images/bmbf_logo.png) 
+
+This is an artefact from a collaboration between DigitalAgentur Brandenburg and KI-Servicezentrum Berlin-Brandenburg. DigitalAgentur Brandenburg is funded by the Ministry for Economic Affairs, Labour and Energy of the State of Brandenburg. KI-Servicezentrum Berlin-Brandenburg is funded by the Federal Ministry of Education and Research under the funding code 01IS22092.
