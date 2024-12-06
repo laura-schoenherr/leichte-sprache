@@ -11,6 +11,12 @@ Locally-run tool to simplify German into "Leichte Sprache" (easy language) based
 
 The browser interface is designed for intuitive use, allowing experimentation with different models and approaches. The implementation focuses on simplicity, low-level components and modularity, allowing developers and Python enthusiasts to modify and build upon.
 
+  Key Features
+  - Simplifies complex German text into easy-to-understand language
+  - Browser-based interface for intuitive usage
+  - Local execution for privacy and control
+  - Configurable parameters for output customization
+
 ### Installation
 
 #### Install the basic tool
