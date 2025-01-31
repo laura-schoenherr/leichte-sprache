@@ -54,7 +54,7 @@ $ python3 app.py
 
 [*] If you chose the installation with a virtual environment, remember to activate it before starting the application by running ```$ source .myvenv/bin/activate```
 
-Performance consideration: On notebooks/PCs with dedicated GPUs, all the  set models should run properly and fast. On a standard notebook,  or if you encounter any memory of performance issues, prioritize the models based on llama 3.2 as they are smaller than the models based on llama 3.1 and need less hardware requirements.
+Performance consideration: On notebooks/PCs with dedicated GPUs, all the set models should run properly and fast. On a standard notebook, or if you encounter any memory or performance issues, prioritize the models based on llama 3.2 as they are smaller than the models based on llama 3.1 and need less hardware requirements.
 
 ---
 
