@@ -17,7 +17,9 @@ DEFAULT_MODEL = p.MODEL if (p.MODEL in AVBL_LLMS) else AVBL_LLM_CHOICES[0]
 ls_ui = gr.Interface(
     simplify_text,
     gr.Textbox(label="Original Text", lines=17, autoscroll=True),
-    gr.Textbox(label="Leichte Sprache", lines=17, autoscroll=True),
+    gr.Textbox(
+        label="Leichte Sprache", lines=17, autoscroll=True, show_label=True, show_copy_button=True
+    ),
     title="KI-Prototyp: Leichte Sprache für die Verwaltung",
     description="Simplify Text with LLMs!",
     examples=[[p.EXAMPLE, DEFAULT_MODEL, False, 5, 0.9, 0.3]],
