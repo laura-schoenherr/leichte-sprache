@@ -12,9 +12,10 @@ def simplify_text(
     text: str, llm: str, use_rules: bool, top_k: int, top_p: float, temp: float
 ) -> str:
     if llm is None:
-        logging.warning(f"No LLM specified. Setting {MODEL} as default")
+        logger.warning(f"No LLM specified. Setting {MODEL} as default")
         llm = MODEL
     prompt = create_prompt(text, use_rules)
+    logger.debug(f"Sent prompt:\n{prompt}")
     simplified_text = llm_generate(prompt, llm, top_k, top_p, temp)
     return simplified_text
 
