@@ -66,3 +66,23 @@ Pull the fined-tuned models:
 $ ollama pull kisz/llama3.2-leichte-sprache-ft:latest
 $ ollama pull kisz/llama3.1-leichte-sprache-ft:latest
 ```
+---
+
+#### Install with Docker
+
+Prerequisites:
+- Docker and Docker Compose installed on your system
+- Ollama running locally (required as the container needs to access Ollama on the host machine)
+
+Steps:
+1. Download or clone the repository
+2. Navigate to the project directory
+3. Build and start the container:
+   ```shell
+   $ docker compose up -d
+   ```
+4. Access the application at http://localhost:7860
+
+Notes:
+- The exports directory is mounted as a volume, so all exports will be available in the local ./exports directory
+- The container needs host network access to communicate with Ollama running on your machine
