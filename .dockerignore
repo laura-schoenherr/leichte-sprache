@@ -1,0 +1,30 @@
+# Version control
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.myvenv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+
+# Local development
+bin/
+docs/
+LICENSE
+README.md
+*.md
+
+# Exports (will be created in container)
+exports/*
+
+# Data directory (not needed for runtime)
+data/
