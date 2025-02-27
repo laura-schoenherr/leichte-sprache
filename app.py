@@ -39,7 +39,7 @@ ls_ui = gr.Interface(
     ],
     additional_inputs_accordion=gr.Accordion(label="Settings", open=False),
     submit_btn="Simplify!",
-    css="footer:has(.built-with) {display: none !important;}",
+    css="footer {visibility: hidden}",
 )
 
 if __name__ == "__main__":
