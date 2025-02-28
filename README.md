@@ -29,7 +29,7 @@ Follow the [installation instructions](docs/installation.md)
 
 ### Usage
 
-- Start the tool [*]
+- Start the tool [\*]
 
 ```shell
 $ python3 app.py
@@ -52,7 +52,7 @@ $ python3 app.py
 
 ---
 
-[*] If you chose the installation with a virtual environment, remember to activate it before starting the application by running ```$ source .myvenv/bin/activate```
+[\*] If you chose the installation with a virtual environment, remember to activate it before starting the application by running ```$ source .myvenv/bin/activate```
 
 Performance consideration: On notebooks/PCs with dedicated GPUs, all the set models should run properly and fast. On a standard notebook, or if you encounter any memory or performance issues, prioritize the models based on llama 3.2 as they are smaller than the models based on llama 3.1 and need less hardware requirements.
 
@@ -84,6 +84,9 @@ For more detailed logging, set the `LOG_LEVEL` environment variable:
 $ export LOG_LEVEL='DEBUG'
 ```
 ---
+
+## Author
+- [Joaquin Gomez Prats](https://github.com/slovanos)
 
 ## License
 [GPLv3](./LICENSE)
