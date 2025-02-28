@@ -1,4 +1,4 @@
-After downloading or cloning the repo, you can run the following script on bash to install the code and the local models server:
+After downloading or cloning the repo, you can run the following script on bash to install the code and the local models server (Ollama):
 
 ```shell
 $ bin/install.sh
@@ -6,7 +6,7 @@ $ bin/install.sh
 
 ---
 
-**Alternatively, install it manually:**
+**Alternatively, install the above manually:**
 
 #### Create and activate a virtual environment (optional)
 
@@ -32,7 +32,7 @@ $ curl -fsSL https://ollama.ai/install.sh | sh
 Or follow the installation instructions for your operating system: [Install Ollama](https://ollama.com/download)
 
 ---
-##### Model Set-Up
+#### Model Set-Up
 
 **With the repository and Ollama installed you need to Pull/Download the basic models and create the customized versions:**
 
@@ -73,6 +73,7 @@ $ ollama pull kisz/llama3.1-leichte-sprache-ft:latest
 Prerequisites:
 - Docker and Docker Compose installed on your system
 - Ollama running locally (required as the container needs to access Ollama on the host machine)
+- Model Set-Up step from above
 
 Steps:
 1. Download or clone the repository
